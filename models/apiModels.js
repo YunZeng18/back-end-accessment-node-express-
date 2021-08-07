@@ -2,7 +2,7 @@ const axios = require('axios');
 const NodeCache = require("node-cache");
 const cache = new NodeCache({ stdTTL: 15 });
 
-
+//simple caching
 function getByTag(tag) {
     if (cache.has(tag)) return cache.get(tag);
 
@@ -45,6 +45,7 @@ function binarySortedSearch(items, value) {
 
     }
 
+    //edge cases
     if (items[middleIndex].id == value) {
         return -1;
     } else if (value < items[0].id) {

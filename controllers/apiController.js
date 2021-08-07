@@ -17,6 +17,7 @@ async function getPosts(req, res) {
 
         let posts = await api.getByTags(tags);//default sorted by id and asc
 
+        //***sort posts base on query***//
         if (!sortCriterias.includes(req.query.sortBy) && req.query.sortBy != undefined) {
             res.status(400).json({ error: "sortBy parameter is invalid" });
             return;//skip the last line res.json({ posts: posts });
@@ -57,6 +58,8 @@ async function getPosts(req, res) {
                     break;
             }
         }
+        /*end of posts  sort logic */
+
 
         res.json({ posts: posts });
     }
